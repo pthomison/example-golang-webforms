@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/fs"
 	"net/http"
+	"strconv"
 
 	utils "github.com/pthomison/golang-utils"
 	"github.com/spf13/cobra"
@@ -12,8 +13,8 @@ import (
 
 type Form struct {
 	FormString string
-	FormNumber int32
-	FormFloat  float32
+	FormNumber int
+	FormFloat  float64
 	FormBool   bool
 }
 
@@ -46,11 +47,35 @@ func Server() {
 
 	http.Handle("/", http.FileServer(http.FS(web)))
 	// http.HandleFunc("/subreddits", subreddits(c))
-	http.HandleFunc("/form", Form)
+	http.HandleFunc("/form", FormFunc)
 
 	http.ListenAndServe(address, nil)
 }
 
-func Form(w http.ResponseWriter, r *http.Request) {
+func FormFunc(w http.ResponseWriter, r *http.Request) {
 
+	form := &Form{}
+
+	r.ParseForm()
+	// fmt.Printf("%+v\n", r.Form)
+
+	form.FormString = r.Form["FormString"][0]
+
+	fn_str := r.Form["FormNumber"][0]
+	if fn_str != "" {
+		fn_int, err := strconv.Atoi(fn_str)
+		utils.Check(err)
+		form.FormNumber = fn_int
+	}
+
+	ff_str := r.Form["FormFloat"][0]
+	if ff_str != "" {
+		ff_float, err := strconv.ParseFloat(ff_str, 64)
+		utils.Check(err)
+		form.FormFloat = ff_float
+	}
+
+	fmt.Printf("%+v\n", form)
+
+	http.Redirect(w, r, "/", http.StatusFound)
 }

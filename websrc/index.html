@@ -7,39 +7,30 @@
 <body>
 	<h1>Golang Webforms</h1>
 
-	<form>
+	<form action="/form">
 	  <div class="mb-3">
-	    <label for="search" class="form-label">
-	    	<input type="text" name="search" class="form-control" id="search" value="{{ .SearchTerm }}">
-	    </label>
-	    <label for="nsfw" class="form-label">NSFW
-	    	<input type="checkbox" name="nsfw" id="nsfw" checked={{.NSFW}}>
-	    </label>
-	    
-	</div>
-	  <button type="submit" class="btn btn-primary">Search</button>
-	</form>
 
-	<hr />
+		<label for="FormString" class="form-label">FormString
+			<input type="text" name="FormString" class="form-control" id="FormString">
+		</label>
 
-	<form>
-	  <div class="mb-3">
-	    <label for="popular" class="form-check-label">Popular
-	    	<input type="radio" name="scan" class="form-check-input" id="popular">
-	    </label>
+		<label for="FormNumber" class="form-label">FormNumber
+			<input type="number" name="FormNumber" id="FormNumber">
+		</label>
+		
+		<label for="FormFloat" class="form-label">FormFloat
+			<input type="number" name="FormFloat" id="FormFloat" step="0.00000000000000000001">
+		</label>
 
-	    <label for="new" class="form-check-label">New
-	    	<input type="radio" name="scan" class="form-check-input" id="new">
-	    </label>
-
-	    <label for="limit" class="form-label">Limit
-	    	<input type="number" name="limit" class="form-control" id="limit">
-	    </label>
+		<label for="FormBool" class="form-label">FormBool
+			<input type="checkbox" name="FormBool" id="FormBool">
+		</label>
 
 	</div>
-	  <button type="submit" class="btn btn-primary">Scan</button>
+
+		<button type="submit" class="btn btn-primary">Search</button>
+
 	</form>
 
 </body>
-
 </html>
