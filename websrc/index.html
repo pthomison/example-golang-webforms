@@ -1,0 +1,45 @@
+<html>
+
+<head>
+	<title>golang-webforms</title>
+</head>
+
+<body>
+	<h1>Golang Webforms</h1>
+
+	<form>
+	  <div class="mb-3">
+	    <label for="search" class="form-label">
+	    	<input type="text" name="search" class="form-control" id="search" value="{{ .SearchTerm }}">
+	    </label>
+	    <label for="nsfw" class="form-label">NSFW
+	    	<input type="checkbox" name="nsfw" id="nsfw" checked={{.NSFW}}>
+	    </label>
+	    
+	</div>
+	  <button type="submit" class="btn btn-primary">Search</button>
+	</form>
+
+	<hr />
+
+	<form>
+	  <div class="mb-3">
+	    <label for="popular" class="form-check-label">Popular
+	    	<input type="radio" name="scan" class="form-check-input" id="popular">
+	    </label>
+
+	    <label for="new" class="form-check-label">New
+	    	<input type="radio" name="scan" class="form-check-input" id="new">
+	    </label>
+
+	    <label for="limit" class="form-label">Limit
+	    	<input type="number" name="limit" class="form-control" id="limit">
+	    </label>
+
+	</div>
+	  <button type="submit" class="btn btn-primary">Scan</button>
+	</form>
+
+</body>
+
+</html>
