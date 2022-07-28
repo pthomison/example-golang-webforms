@@ -3,11 +3,8 @@ module github.com/pthomison/golang-webforms
 go 1.18
 
 require (
-	github.com/gorilla/websocket v1.4.2
 	github.com/pthomison/golang-utils v0.0.4-0.20220609165346-b45fe485bc28
 	github.com/spf13/cobra v1.4.0
-	github.com/vartanbeno/go-reddit/v2 v2.0.1
-	gorm.io/gorm v1.23.5
 )
 
 require (
@@ -17,7 +14,6 @@ require (
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/google/go-cmp v0.5.5 // indirect
-	github.com/google/go-querystring v1.0.0 // indirect
 	github.com/google/gofuzz v1.1.0 // indirect
 	github.com/googleapis/gnostic v0.5.5 // indirect
 	github.com/imdario/mergo v0.3.5 // indirect
@@ -37,7 +33,6 @@ require (
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.1 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
-	github.com/vartanbeno/go-reddit v1.0.0 // indirect
 	golang.org/x/crypto v0.0.0-20210921155107-089bfa567519 // indirect
 	golang.org/x/net v0.0.0-20210614182718-04defd469f4e // indirect
 	golang.org/x/oauth2 v0.0.0-20200107190931-bf48bf16ab8d // indirect
@@ -51,6 +46,7 @@ require (
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 	gorm.io/driver/postgres v1.3.7 // indirect
+	gorm.io/gorm v1.23.8 // indirect
 	k8s.io/api v0.22.4 // indirect
 	k8s.io/apimachinery v0.22.4 // indirect
 	k8s.io/client-go v0.22.4 // indirect
