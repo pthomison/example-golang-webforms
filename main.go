@@ -46,7 +46,6 @@ func Server() {
 	utils.Check(err)
 
 	http.Handle("/", http.FileServer(http.FS(web)))
-	// http.HandleFunc("/subreddits", subreddits(c))
 	http.HandleFunc("/form", FormFunc)
 
 	http.ListenAndServe(address, nil)
@@ -55,27 +54,32 @@ func Server() {
 func FormFunc(w http.ResponseWriter, r *http.Request) {
 
 	form := &Form{}
-
 	r.ParseForm()
-	// fmt.Printf("%+v\n", r.Form)
 
-	form.FormString = r.Form["FormString"][0]
+	form.FormString = r.FormValue("FormString")
 
-	fn_str := r.Form["FormNumber"][0]
+	fn_str := r.FormValue("FormNumber")
 	if fn_str != "" {
-		fn_int, err := strconv.Atoi(fn_str)
+		fn, err := strconv.Atoi(fn_str)
 		utils.Check(err)
-		form.FormNumber = fn_int
+		form.FormNumber = fn
 	}
 
-	ff_str := r.Form["FormFloat"][0]
+	ff_str := r.FormValue("FormFloat")
 	if ff_str != "" {
-		ff_float, err := strconv.ParseFloat(ff_str, 64)
+		ff, err := strconv.ParseFloat(ff_str, 64)
 		utils.Check(err)
-		form.FormFloat = ff_float
+		form.FormFloat = ff
+	}
+
+	fb_str := r.FormValue("FormBool")
+	fmt.Println(fb_str)
+	if fb_str == "on" {
+		form.FormBool = true
 	}
 
 	fmt.Printf("%+v\n", form)
+	fmt.Printf("%+v\n", r.Form)
 
 	http.Redirect(w, r, "/", http.StatusFound)
 }
