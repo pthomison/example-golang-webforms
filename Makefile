@@ -1,15 +1,10 @@
-# run: docker_pack backend
+run: docker_pack backend
 
-# backend:
-# 	go run . \
-# 		--db-host localhost --db-user pthomison --db-name postgres --db-password "\"\"" \
-# 		--reddit-username kubelet-bot \
-# 		--reddit-password $(shell aws ssm get-parameter --name "/reddit/kubelet-bot-password" --with-decryption | jq -r '.Parameter.Value') \
-# 		--reddit-id $(shell aws ssm get-parameter --name "/reddit/personal-testing-app/id" --with-decryption | jq -r '.Parameter.Value') \
-# 		--reddit-secret $(shell aws ssm get-parameter --name "/reddit/personal-testing-app/secret" --with-decryption | jq -r '.Parameter.Value')
-
-mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
-current_dir := $(notdir $(patsubst %/,%,$(dir $(mkfile_path))))
+backend:
+	go run .
+	
+# mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
+# current_dir := $(notdir $(patsubst %/,%,$(dir $(mkfile_path))))
 
 serve:
 	npx webpack serve \

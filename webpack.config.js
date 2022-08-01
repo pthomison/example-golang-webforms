@@ -41,8 +41,11 @@ var loadingRules = [
       'vue-style-loader',
       'css-loader'
     ]
-  }
-
+  },
+	{
+		test: /\.(png|svg|jpg|jpeg|gif|ico)$/i,
+		type: 'asset/resource',
+	}
 ]
 
 
