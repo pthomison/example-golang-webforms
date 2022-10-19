@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"strconv"
 
-	utils "github.com/pthomison/golang-utils"
+	"github.com/pthomison/errcheck"
 	"github.com/spf13/cobra"
 )
 
@@ -33,7 +33,7 @@ var (
 
 func main() {
 	err := rootCmd.Execute()
-	utils.Check(err)
+	errcheck.Check(err)
 }
 
 func run(cmd *cobra.Command, args []string) {
@@ -43,7 +43,7 @@ func run(cmd *cobra.Command, args []string) {
 
 func Server() {
 	web, err := fs.Sub(embeddedFiles, "web")
-	utils.Check(err)
+	errcheck.Check(err)
 
 	http.Handle("/", http.FileServer(http.FS(web)))
 	http.HandleFunc("/form", FormFunc)
@@ -61,14 +61,14 @@ func FormFunc(w http.ResponseWriter, r *http.Request) {
 	fn_str := r.FormValue("FormNumber")
 	if fn_str != "" {
 		fn, err := strconv.Atoi(fn_str)
-		utils.Check(err)
+		errcheck.Check(err)
 		form.FormNumber = fn
 	}
 
 	ff_str := r.FormValue("FormFloat")
 	if ff_str != "" {
 		ff, err := strconv.ParseFloat(ff_str, 64)
-		utils.Check(err)
+		errcheck.Check(err)
 		form.FormFloat = ff
 	}
 
