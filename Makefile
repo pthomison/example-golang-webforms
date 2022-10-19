@@ -31,7 +31,3 @@ clean:
 
 clean-deps:
 	rm -rf ./node_modules/ || true
-
-clean-images:
-	docker rmi webpack || true
-	rm ./.image || true
